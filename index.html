@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payal Choudhary — Brand Marketing</title>
+<style>
+:root {
+  --ink: #0b0b0f;
+  --surface: #111118;
+  --surface-2: #1a1a26;
+  --surface-3: #22222e;
+  --gold: #c8923c;
+  --gold-light: #e8b458;
+  --gold-dim: rgba(200,146,60,0.10);
+  --gold-border: rgba(200,146,60,0.22);
+  --text: #ecedf1;
+  --text-2: #9a9ab2;
+  --text-3: #5c5c72;
+  --border: rgba(255,255,255,0.06);
+  --border-2: rgba(255,255,255,0.10);
+  --fd: 'Cambria','Georgia',serif;
+  --fb: system-ui,-apple-system,'Segoe UI',sans-serif;
+  --hero-sz: clamp(3.2rem,7.5vw,6.8rem);
+  --h1: clamp(1.75rem,3.5vw,2.625rem);
+  --h2: clamp(1.2rem,2.2vw,1.5rem);
+  --sm: 0.875rem;
+  --xs: 0.75rem;
+  --pad: clamp(4rem,8vw,7rem);
+  --wrap: 74rem;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scrollbar-color:var(--surface-3) var(--ink);scrollbar-width:thin}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+body{background:var(--ink);color:var(--text);font-family:var(--fb);font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--fd);line-height:1.15;text-wrap:balance}
+a{color:var(--gold-light);text-decoration:none;transition:color .2s}
+a:hover{color:var(--gold)}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+ul{list-style:none}
+
+/* layout */
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem)}
+.sec{padding:var(--pad) 0}
+.lbl{font-family:var(--fb);font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:.6rem;display:block}
+.sec-h{font-family:var(--fd);font-size:var(--h1);margin-bottom:2.75rem}
+.sec-h em{font-style:normal;color:var(--gold-light)}
+
+/* fade-in */
+.fi{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.fi.on{opacity:1;transform:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 0;transition:background .3s,padding .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.sc{background:rgba(11,11,15,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:.85rem 0;border-bottom-color:var(--border)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;max-width:var(--wrap);margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem)}
+.nav-logo{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--text);letter-spacing:-.01em}
+.nav-logo span{color:var(--gold-light)}
+.nl{display:flex;align-items:center;gap:1.875rem}
+.nl a{font-size:var(--sm);font-weight:500;color:var(--text-2);position:relative;transition:color .2s;letter-spacing:.02em}
+.nl a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .2s}
+.nl a:hover{color:var(--text)}
+.nl a:hover::after,.nl a.act::after{transform:scaleX(1)}
+.nl a.act{color:var(--gold-light)}
+.nl .ncta{font-size:var(--sm);font-weight:600;padding:.5rem 1.2rem;background:var(--gold-dim);color:var(--gold-light)!important;border:1px solid var(--gold-border);border-radius:3px;transition:background .2s,border-color .2s!important}
+.nl .ncta:hover{background:rgba(200,146,60,.18)!important}
+.nl .ncta::after{display:none!important}
+.ntog{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.ntog span{display:block;width:22px;height:1.5px;background:var(--text);transition:transform .2s,opacity .2s}
+@media(max-width:780px){
+  .ntog{display:flex}
+  .nl{position:fixed;top:0;right:0;bottom:0;width:min(280px,80vw);background:var(--surface);flex-direction:column;align-items:flex-start;padding:5rem 2rem 2rem;gap:1.5rem;transform:translateX(100%);transition:transform .3s;border-left:1px solid var(--border)}
+  .nl.open{transform:none}
+  .nl a{font-size:1rem}
+}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:6rem 0 4rem}
+#hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(200,146,60,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(200,146,60,.028) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 75% at 50% 45%,black 35%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 75% at 50% 45%,black 35%,transparent 100%);pointer-events:none}
+#hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(to bottom,transparent,var(--ink));pointer-events:none}
+.hero-g{display:grid;grid-template-columns:1fr 1px 1fr;gap:0 3rem;align-items:center;width:100%}
+.hero-div{width:1px;height:240px;background:linear-gradient(to bottom,transparent,var(--gold-border),transparent);justify-self:center}
+.hero-eye{display:inline-flex;align-items:center;gap:.75rem;font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);margin-bottom:1.5rem}
+.hero-eye::before{content:'';width:14px;height:1px;background:var(--gold)}
+.hero-name{font-family:var(--fd);font-size:var(--hero-sz);font-weight:700;line-height:.92;letter-spacing:-.025em;color:var(--text);margin-bottom:1.5rem}
+.hero-role{font-size:clamp(.95rem,1.8vw,1.2rem);color:var(--text-2);margin-bottom:1rem;line-height:1.4}
+.hero-bio{font-size:var(--sm);color:var(--text-3);line-height:1.75;max-width:44ch;margin-bottom:2.5rem}
+.acts{display:flex;gap:.875rem;flex-wrap:wrap}
+.btn{display:inline-block;font-size:var(--sm);font-weight:600;letter-spacing:.02em;padding:.75rem 1.75rem;border-radius:3px;transition:all .2s;border:1px solid transparent;cursor:pointer}
+.bp{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.bp:hover{background:var(--gold-light);border-color:var(--gold-light);color:var(--ink);transform:translateY(-1px)}
+.bg{background:transparent;color:var(--text-2);border-color:var(--border-2)}
+.bg:hover{color:var(--text);border-color:var(--text-3);background:rgba(255,255,255,.04)}
+.hero-stats{display:flex;flex-direction:column;gap:2.5rem;padding-left:1rem}
+.sv{display:block;font-family:var(--fd);font-size:clamp(2rem,3.2vw,2.875rem);font-weight:700;color:var(--gold-light);line-height:1;margin-bottom:.35rem;font-variant-numeric:tabular-nums}
+.sl{display:block;font-size:var(--sm);color:var(--text-3);line-height:1.35}
+.scroll-ind{position:absolute;bottom:2.25rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--text-3);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;z-index:1}
+.sarr{width:18px;height:18px;border-right:1px solid var(--text-3);border-bottom:1px solid var(--text-3);transform:rotate(45deg);animation:bo 2s ease-in-out infinite}
+@keyframes bo{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(4px)}}
+@media(max-width:760px){
+  .hero-g{grid-template-columns:1fr;gap:3rem}
+  .hero-div{display:none}
+  .hero-stats{flex-direction:row;flex-wrap:wrap;gap:1.5rem;padding-left:0}
+  .hero-stats > div{flex:1;min-width:110px}
+  .scroll-ind{display:none}
+}
+
+/* ABOUT */
+#about{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.about-g{display:grid;grid-template-columns:1fr 1fr;gap:2.75rem;align-items:start}
+.aq{font-family:var(--fd);font-size:clamp(1.2rem,2.4vw,1.625rem);line-height:1.5;font-style:italic;padding-left:1.625rem;border-left:2px solid var(--gold);color:var(--text)}
+.aq strong{font-style:normal;color:var(--gold-light)}
+.at{font-size:.9375rem;color:var(--text-2);line-height:1.8}
+.at p+p{margin-top:.875rem}
+.atags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.875rem}
+.atag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:.35rem .875rem;background:var(--surface-2);color:var(--text-2);border:1px solid var(--border-2);border-radius:2px}
+@media(max-width:680px){.about-g{grid-template-columns:1fr}}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;gap:2rem}
+.tli{display:grid;grid-template-columns:24px 1fr;gap:1.25rem}
+.tlg{display:flex;flex-direction:column;align-items:center;padding-top:14px}
+.tld{width:10px;height:10px;background:var(--gold);border-radius:50%;box-shadow:0 0 0 3px var(--ink),0 0 0 4.5px var(--gold-border);flex-shrink:0}
+.tltr{flex:1;width:1px;background:linear-gradient(to bottom,var(--gold-border),var(--border));margin-top:7px}
+.tli:last-child .tltr{display:none}
+.tlc{background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:1.75rem 2rem;transition:border-color .2s}
+.tlc:hover{border-color:var(--gold-border)}
+.tlh{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:.25rem}
+.tlco{font-family:var(--fd);font-size:var(--h2);font-weight:700;color:var(--text)}
+.tldu{font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--gold);white-space:nowrap;padding-top:.2rem}
+.tlro{font-size:var(--sm);color:var(--text-2);font-weight:500;margin-bottom:1.125rem}
+.tlb{display:flex;flex-direction:column;gap:.55rem}
+.tlb li{font-size:var(--sm);color:var(--text-2);padding-left:1.125rem;position:relative;line-height:1.6}
+.tlb li::before{content:'';position:absolute;left:0;top:.6em;width:4px;height:4px;background:var(--gold-border);border-radius:50%}
+
+/* PROJECTS */
+#projects{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.pc{background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:2rem;display:flex;flex-direction:column;gap:1.125rem;transition:border-color .25s,transform .25s}
+.pc:hover{border-color:var(--gold-border);transform:translateY(-2px)}
+.ptag{font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold)}
+.pt{font-family:var(--fd);font-size:var(--h2);line-height:1.2}
+.pd{font-size:var(--sm);color:var(--text-2);line-height:1.72;flex:1}
+.pb{display:flex;flex-direction:column;gap:.5rem}
+.pb li{font-size:var(--sm);color:var(--text-2);padding-left:1.125rem;position:relative;line-height:1.58}
+.pb li::before{content:'';position:absolute;left:0;top:.6em;width:4px;height:4px;background:var(--gold);border-radius:50%}
+.pm{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;padding-top:1.25rem;border-top:1px solid var(--border);margin-top:auto}
+.mval{font-family:var(--fd);font-size:1.35rem;font-weight:700;color:var(--gold-light);line-height:1;font-variant-numeric:tabular-nums}
+.mlbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-3);margin-top:.2rem}
+@media(max-width:720px){.pg{grid-template-columns:1fr}}
+
+/* SKILLS */
+.sk-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.375rem}
+.sg{background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:1.5rem;transition:border-color .2s}
+.sg:hover{border-color:var(--gold-border)}
+.sgt{font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.875rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+.stags{display:flex;flex-wrap:wrap;gap:.4rem}
+.stag{font-size:.7rem;font-weight:500;padding:.3rem .75rem;background:var(--surface-3);color:var(--text-2);border-radius:2px;border:1px solid transparent;transition:all .15s;cursor:default}
+.stag:hover{background:var(--gold-dim);color:var(--gold-light);border-color:var(--gold-border)}
+
+/* EDUCATION */
+#education{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.edu-g{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.educ{background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:2rem;position:relative;overflow:hidden}
+.educ::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.edt{font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.5rem}
+.edd{font-family:var(--fd);font-size:var(--h2);margin-bottom:.3rem}
+.eds{font-size:var(--sm);color:var(--gold-light);font-weight:500;margin-bottom:.875rem}
+.edu{font-size:var(--sm);color:var(--text-2);font-weight:600}
+.edl{font-size:var(--sm);color:var(--text-3)}
+@media(max-width:620px){.edu-g{grid-template-columns:1fr}}
+
+/* ACCOMPLISHMENTS */
+.acc-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.375rem}
+.ac{background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:1.75rem;transition:border-color .2s}
+.ac:hover{border-color:var(--gold-border)}
+.ac-role{font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.45rem}
+.ac-t{font-family:var(--fd);font-size:var(--h2);margin-bottom:.2rem}
+.ac-org{font-size:var(--sm);color:var(--text-3);margin-bottom:1rem}
+.ac-num{font-family:var(--fd);font-size:2rem;font-weight:700;color:var(--gold-light);line-height:1;font-variant-numeric:tabular-nums}
+.ac-nl{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-3);margin-top:.2rem}
+.ac-d{font-size:var(--sm);color:var(--text-2);line-height:1.6;margin-top:.875rem}
+@media(max-width:760px){.acc-g{grid-template-columns:1fr}}
+
+/* CERTIFICATIONS */
+#certifications{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cert-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem}
+.crt{background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:.875rem;transition:border-color .2s}
+.crt:hover{border-color:var(--gold-border)}
+.cri{font-size:1.25rem;flex-shrink:0;margin-top:.1rem}
+.crp{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.2rem}
+.crn{font-size:var(--sm);font-weight:600;color:var(--text);line-height:1.35}
+
+/* PUBLICATIONS */
+.pub-g{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.pub{background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:2rem;transition:border-color .2s}
+.pub:hover{border-color:var(--gold-border)}
+.pubt{font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.75rem}
+.pubh{font-family:var(--fd);font-size:var(--h2);margin-bottom:1rem;line-height:1.3}
+.pubb{display:flex;flex-direction:column;gap:.5rem}
+.pubb li{font-size:var(--sm);color:var(--text-2);padding-left:1.125rem;position:relative;line-height:1.58}
+.pubb li::before{content:'';position:absolute;left:0;top:.6em;width:4px;height:4px;background:var(--gold-border);border-radius:50%}
+@media(max-width:620px){.pub-g{grid-template-columns:1fr}}
+
+/* CONTACT */
+#contact{background:var(--surface);border-top:1px solid var(--border)}
+.con-g{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:start}
+.con-h{font-family:var(--fd);font-size:var(--h1);margin-bottom:.875rem}
+.con-h em{font-style:normal;color:var(--gold-light)}
+.con-s{font-size:var(--sm);color:var(--text-2);line-height:1.72;margin-bottom:2.25rem;max-width:42ch}
+.clinks{display:flex;flex-direction:column;gap:1.125rem}
+.clink{display:flex;align-items:center;gap:.875rem;color:var(--text-2);font-size:var(--sm);font-weight:500;transition:color .2s}
+.clink:hover{color:var(--gold-light)}
+.cli{width:36px;height:36px;background:var(--surface-3);border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.875rem;flex-shrink:0;transition:background .2s,border-color .2s}
+.clink:hover .cli{background:var(--gold-dim);border-color:var(--gold-border)}
+.langs{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.lang{display:flex;align-items:center;gap:.45rem;font-size:var(--sm);color:var(--text-2);background:var(--surface-2);border:1px solid var(--border);padding:.45rem 1.125rem;border-radius:2px}
+.ldot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.avail{background:var(--surface-2);border:1px solid var(--border);border-radius:5px;padding:2rem}
+.avail-h{font-family:var(--fd);font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.avail-s{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem}
+.adot{width:8px;height:8px;background:#4ade80;border-radius:50%;box-shadow:0 0 0 2px rgba(74,222,128,.2);animation:pg 2.5s ease-in-out infinite;flex-shrink:0}
+@keyframes pg{0%,100%{box-shadow:0 0 0 2px rgba(74,222,128,.2)}50%{box-shadow:0 0 0 5px rgba(74,222,128,.08)}}
+.avail-st{font-size:var(--sm);font-weight:700;color:#4ade80}
+.avail-d{font-size:var(--sm);color:var(--text-2);line-height:1.68;margin-bottom:1.5rem}
+.aitags{display:flex;flex-wrap:wrap;gap:.5rem}
+.aitag{font-size:.68rem;font-weight:700;padding:.3rem .75rem;background:var(--gold-dim);color:var(--gold-light);border:1px solid var(--gold-border);border-radius:2px;text-transform:uppercase;letter-spacing:.06em}
+@media(max-width:760px){.con-g{grid-template-columns:1fr;gap:2.5rem}}
+
+/* FOOTER */
+footer{background:var(--ink);border-top:1px solid var(--border);padding:1.75rem 0}
+.foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+.fn{font-family:var(--fd);font-size:.9375rem;font-weight:700;color:var(--text-3)}
+.fc{font-size:var(--xs);color:var(--text-3);letter-spacing:.04em}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mn">
+  <div class="nav-in">
+    <a href="#hero" class="nav-logo">Payal <span>Choudhary</span></a>
+    <button class="ntog" id="nt" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <div class="nl" id="nl">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#accomplishments">Accomplishments</a>
+      <a href="#contact" class="ncta">Hire Me</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-g">
+      <div class="fi">
+        <span class="hero-eye">MBA · Brand Marketing · Strategy</span>
+        <h1 class="hero-name">Payal<br>Choudhary</h1>
+        <p class="hero-role">Brand Marketing &amp; Social Media Management</p>
+        <p class="hero-bio">MBA graduate from Woxsen University specializing in brand strategy, digital marketing, and consumer insights. Building brands that resonate through data, creativity, and purposeful storytelling.</p>
+        <div class="acts">
+          <a href="#projects" class="btn bp">View Work</a>
+          <a href="#contact" class="btn bg">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-div"></div>
+      <div class="hero-stats fi" style="transition-delay:.15s">
+        <div>
+          <span class="sv"><span class="cu" data-t="187">0</span>K+</span>
+          <span class="sl">Instagram Campaign Reach</span>
+        </div>
+        <div>
+          <span class="sv"><span class="cu" data-t="70">0</span>+</span>
+          <span class="sl">LinkedIn Prospects Researched</span>
+        </div>
+        <div>
+          <span class="sv">5,000+</span>
+          <span class="sl">Event Audience Managed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-ind"><span>Scroll</span><div class="sarr"></div></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="wrap">
+    <span class="lbl fi">About</span>
+    <div class="about-g">
+      <div class="fi" style="transition-delay:.05s">
+        <blockquote class="aq">"Building <strong>meaningful brands</strong> through research, consumer insight, and <strong>data-driven strategy</strong> that connects with people."</blockquote>
+      </div>
+      <div class="fi" style="transition-delay:.1s">
+        <div class="at">
+          <p>MBA graduate from Woxsen University specializing in Marketing, with hands-on experience across branding, content strategy, market research, and digital campaigns.</p>
+          <p>Developed a deep understanding of brand positioning, consumer behavior, and communication strategy through real-world internships and academic projects — including live Instagram campaigns that achieved 187K+ reach on a ₹627 budget and a 9.7× CTR improvement.</p>
+          <p>Actively seeking brand strategy and management roles where strong communication, analytical thinking, and creative problem-solving can contribute to building brands that matter.</p>
+        </div>
+        <div class="atags">
+          <span class="atag">Brand Strategy</span>
+          <span class="atag">Digital Marketing</span>
+          <span class="atag">Market Research</span>
+          <span class="atag">Content Strategy</span>
+          <span class="atag">Consumer Insights</span>
+          <span class="atag">GTM Strategy</span>
+          <span class="atag">Paid Media</span>
+          <span class="atag">CRM Analysis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="sec">
+  <div class="wrap">
+    <span class="lbl fi">Work Experience</span>
+    <h2 class="sec-h fi">Professional <em>Journey</em></h2>
+    <div class="tl">
+      <div class="tli fi">
+        <div class="tlg"><div class="tld"></div><div class="tltr"></div></div>
+        <div class="tlc">
+          <div class="tlh">
+            <div><div class="tlco">Talent Excellence Staffing Services</div><div class="tlro">Marketing Intern</div></div>
+            <span class="tldu">Jan 2025 – Mar 2025</span>
+          </div>
+          <ul class="tlb">
+            <li>Conducted market research on staffing services to analyze industry trends, competitors, and target markets.</li>
+            <li>Used LinkedIn Sales Navigator to research and qualify 70+ potential clients for B2B outreach.</li>
+            <li>Executed LinkedIn B2B marketing for prospect research, lead identification, and decision-maker outreach.</li>
+            <li>Executed LinkedIn outreach and cold email sequences for client acquisition.</li>
+            <li>Designed website and brand communication materials — brochures and pitch decks.</li>
+            <li>Collaborated directly with founders to align marketing strategy with sales closures.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tli fi" style="transition-delay:.1s">
+        <div class="tlg"><div class="tld"></div><div class="tltr"></div></div>
+        <div class="tlc">
+          <div class="tlh">
+            <div><div class="tlco">Intellixaa IT Solution Pvt. Ltd.</div><div class="tlro">Management Trainee · Consultant for VeriOnce</div></div>
+            <span class="tldu">May 2022 – Jul 2022</span>
+          </div>
+          <ul class="tlb">
+            <li>Acquired 20+ B2B customers through targeted prospecting and consultative selling.</li>
+            <li>Built a pipeline of 60+ qualified prospects through structured market research and outreach.</li>
+            <li>Scheduled and coordinated 5+ client meetings that led to successful deal conversions.</li>
+            <li>Supported sales and marketing coordination to accelerate deal closures.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="sec">
+  <div class="wrap">
+    <span class="lbl fi">Featured Projects</span>
+    <h2 class="sec-h fi">Case Studies &amp; <em>Campaigns</em></h2>
+    <div class="pg">
+      <div class="pc fi">
+        <div class="ptag">Brand Strategy · FMCG · Team Lead</div>
+        <h3 class="pt">Marketing Strategy &amp; Brand Launch — CapSol</h3>
+        <p class="pd">Led a 5-member cross-functional team to conceptualize and execute an end-to-end marketing strategy and brand launch plan for CapSol — a water-soluble cleaning capsule FMCG innovation — within a 10-day sprint timeline.</p>
+        <ul class="pb">
+          <li>Conducted market problem analysis, consumer insight mapping, and opportunity gap assessment addressing sustainability, packaging inefficiency, and dosing wastage in home care.</li>
+          <li>Designed STP framework, positioning strategy, and value proposition supported by brand architecture, product portfolio strategy, and value-based pricing with penetration bias.</li>
+          <li>Developed a full GTM strategy including D2C launch phases, digital media mix planning, subscription model, and KPI definition (CAC, LTV, repeat purchase, NPS).</li>
+        </ul>
+        <div class="pm">
+          <div><div class="mval">10</div><div class="mlbl">Day Sprint</div></div>
+          <div><div class="mval">5</div><div class="mlbl">Team Members Led</div></div>
+          <div><div class="mval">STP</div><div class="mlbl">Framework Designed</div></div>
+          <div><div class="mval">GTM</div><div class="mlbl">Strategy Built</div></div>
+        </div>
+      </div>
+      <div class="pc fi" style="transition-delay:.1s">
+        <div class="ptag">Paid Media · Analytics · Meta Ads Manager</div>
+        <h3 class="pt">Instagram Ad Campaign — CapSol Paid Media</h3>
+        <p class="pd">Executed Instagram ad campaigns via Meta Ads Manager for a fictional FMCG brand, driving awareness and traffic through data-driven creative iteration and audience optimization.</p>
+        <ul class="pb">
+          <li>Ran 2 campaigns on a ₹627 budget; achieved 187K+ reach and 422 clicks.</li>
+          <li>Improved CTR from 0.10% to 0.97% — a 9.7× improvement — by shifting to video-based creatives.</li>
+          <li>Achieved ₹1.36 CPC through precise audience targeting and placement optimization.</li>
+          <li>Analyzed performance data to recommend a video-first content strategy for ongoing higher engagement.</li>
+        </ul>
+        <div class="pm">
+          <div><div class="mval">187K+</div><div class="mlbl">Total Reach</div></div>
+          <div><div class="mval">₹1.36</div><div class="mlbl">Cost Per Click</div></div>
+          <div><div class="mval">0.97%</div><div class="mlbl">Final CTR</div></div>
+          <div><div class="mval">9.7×</div><div class="mlbl">CTR Improvement</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec">
+  <div class="wrap">
+    <span class="lbl fi">Capabilities</span>
+    <h2 class="sec-h fi">Skills &amp; <em>Expertise</em></h2>
+    <div class="sk-g">
+      <div class="sg fi"><div class="sgt">Content &amp; Branding</div><div class="stags"><span class="stag">Brand Strategy</span><span class="stag">Content Strategy</span><span class="stag">Website Content</span><span class="stag">Video Content Ideation</span><span class="stag">Brand Positioning</span><span class="stag">Pitch Decks</span><span class="stag">Brochure Design</span></div></div>
+      <div class="sg fi" style="transition-delay:.05s"><div class="sgt">Digital Marketing</div><div class="stags"><span class="stag">Instagram Marketing</span><span class="stag">LinkedIn B2B</span><span class="stag">Email Marketing</span><span class="stag">Campaign Execution</span><span class="stag">SEO Basics</span><span class="stag">Keyword Research</span><span class="stag">Performance Tracking</span></div></div>
+      <div class="sg fi" style="transition-delay:.1s"><div class="sgt">Paid Media &amp; Tools</div><div class="stags"><span class="stag">Meta Ads Manager</span><span class="stag">Meta Business Suite</span><span class="stag">Google Ads</span><span class="stag">Canva</span><span class="stag">SEMrush</span><span class="stag">Google Analytics</span><span class="stag">WordPress</span></div></div>
+      <div class="sg fi" style="transition-delay:.15s"><div class="sgt">Research &amp; Analysis</div><div class="stags"><span class="stag">Market Research</span><span class="stag">Competitor Analysis</span><span class="stag">Consumer Insight Mapping</span><span class="stag">Trend Analysis</span><span class="stag">STP Framework</span><span class="stag">CRM Audit</span></div></div>
+      <div class="sg fi" style="transition-delay:.2s"><div class="sgt">Marketing Frameworks</div><div class="stags"><span class="stag">GTM Strategy</span><span class="stag">Brand Architecture</span><span class="stag">D2C Strategy</span><span class="stag">KPI Definition</span><span class="stag">Subscription Models</span><span class="stag">Value Proposition Design</span></div></div>
+      <div class="sg fi" style="transition-delay:.25s"><div class="sgt">Professional Skills</div><div class="stags"><span class="stag">Verbal Communication</span><span class="stag">Written Communication</span><span class="stag">Analytical Thinking</span><span class="stag">Attention to Detail</span><span class="stag">Team Collaboration</span><span class="stag">High Ownership</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="sec">
+  <div class="wrap">
+    <span class="lbl fi">Academic Background</span>
+    <h2 class="sec-h fi">Education</h2>
+    <div class="edu-g">
+      <div class="educ fi">
+        <div class="edt">Post Graduate</div>
+        <div class="edd">Master of Business Administration</div>
+        <div class="eds">Specialization in Marketing</div>
+        <div class="edu">Woxsen University</div>
+        <div class="edl">Hyderabad, Telangana</div>
+      </div>
+      <div class="educ fi" style="transition-delay:.1s">
+        <div class="edt">Under Graduate</div>
+        <div class="edd">Bachelor of Business Administration</div>
+        <div class="eds">Finance &amp; Marketing</div>
+        <div class="edu">ICFAI Business School</div>
+        <div class="edl">Hyderabad, Telangana</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOMPLISHMENTS -->
+<section id="accomplishments" class="sec">
+  <div class="wrap">
+    <span class="lbl fi">Leadership &amp; Awards</span>
+    <h2 class="sec-h fi">Accomplishments</h2>
+    <div class="acc-g">
+      <div class="ac fi">
+        <div class="ac-role">Event Management Head</div>
+        <div class="ac-t">THRITHI'24</div>
+        <div class="ac-org">IBS Hyderabad</div>
+        <div class="ac-num">5,000+</div>
+        <div class="ac-nl">Students Reached</div>
+        <p class="ac-d">Led planning and execution of the annual college fest. Managed vendors, engagement strategy, and crowd control. Oversaw content strategy and creative approvals to ensure brand consistency.</p>
+      </div>
+      <div class="ac fi" style="transition-delay:.1s">
+        <div class="ac-role">Vice President</div>
+        <div class="ac-t">The Archon Club</div>
+        <div class="ac-org">IBS Hyderabad</div>
+        <div class="ac-num">Online + Offline</div>
+        <div class="ac-nl">Dual Channel Marketing</div>
+        <p class="ac-d">Organized marketing simulations and business competitions. Led Instagram content creation and executed on-ground promotional campaigns, boosting student participation.</p>
+      </div>
+      <div class="ac fi" style="transition-delay:.2s">
+        <div class="ac-role">Competition Winner</div>
+        <div class="ac-t">Case Crunch 2.0</div>
+        <div class="ac-org">Woxsen University</div>
+        <div class="ac-num">#1</div>
+        <div class="ac-nl">Top Performer</div>
+        <p class="ac-d">Developed actionable solutions for real-world business cases in a competitive inter-university case study challenge, emerging as the top performer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="sec">
+  <div class="wrap">
+    <span class="lbl fi">Professional Development</span>
+    <h2 class="sec-h fi">Certifications</h2>
+    <div class="cert-g">
+      <div class="crt fi"><div class="cri">🏅</div><div><div class="crp">Brand Management</div><div class="crn">Aligning Business, Brand and Behaviour</div></div></div>
+      <div class="crt fi" style="transition-delay:.05s"><div class="cri">🎓</div><div><div class="crp">HubSpot Academy</div><div class="crn">SEO Fundamentals</div></div></div>
+      <div class="crt fi" style="transition-delay:.1s"><div class="cri">🎓</div><div><div class="crp">HubSpot Academy</div><div class="crn">Social Media Marketing</div></div></div>
+      <div class="crt fi" style="transition-delay:.15s"><div class="cri">📈</div><div><div class="crp">Coursera</div><div class="crn">Google Ads</div></div></div>
+      <div class="crt fi" style="transition-delay:.2s"><div class="cri">🌐</div><div><div class="crp">Coursera</div><div class="crn">WordPress Website Building</div></div></div>
+      <div class="crt fi" style="transition-delay:.25s"><div class="cri">🤝</div><div><div class="crp">Coursera</div><div class="crn">Customer Relationship Management (CRM)</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications" class="sec">
+  <div class="wrap">
+    <span class="lbl fi">Research &amp; Writing</span>
+    <h2 class="sec-h fi">Publications &amp; <em>Research</em></h2>
+    <div class="pub-g">
+      <div class="pub fi">
+        <div class="pubt">Book Chapter</div>
+        <h3 class="pubh">Digital Twin Applications in Business Education &amp; Organizational Decision-Making</h3>
+        <ul class="pubb">
+          <li>Analyzed Digital Twin use cases across supply chain resilience, customer experience, and business process simulation.</li>
+          <li>Examined the role of immersive learning and virtual business simulations in management education.</li>
+          <li>Explored organizational decision-making frameworks enhanced by digital twin technology.</li>
+        </ul>
+      </div>
+      <div class="pub fi" style="transition-delay:.1s">
+        <div class="pubt">Strategic Audit</div>
+        <h3 class="pubh">CRM Audit of Nykaa: A Strategic Evaluation of Customer-Centric Practices</h3>
+        <ul class="pubb">
+          <li>Conducted detailed analysis of customer acquisition, engagement, and retention strategies.</li>
+          <li>Evaluated digital marketing campaigns, personalization efforts, and omnichannel communication.</li>
+          <li>Analyzed customer data management and feedback systems to identify gaps and improvement areas.</li>
+          <li>Provided actionable recommendations to improve customer experience and long-term value.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="wrap">
+    <div class="con-g">
+      <div class="fi">
+        <span class="lbl">Let's Connect</span>
+        <h2 class="con-h">Open to <em>Opportunities</em></h2>
+        <p class="con-s">Interested in brand marketing, digital strategy, and social media management roles. Always open to meaningful conversations about building better brands.</p>
+        <div class="clinks">
+          <a href="mailto:choudharypayal0906@gmail.com" class="clink"><span class="cli">✉</span>choudharypayal0906@gmail.com</a>
+          <a href="tel:+916301879226" class="clink"><span class="cli">☎</span>+91 6301 879 226</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="clink"><span class="cli" style="font-weight:700;font-size:.75rem">in</span>LinkedIn Profile</a>
+        </div>
+        <div class="langs">
+          <div class="lang"><span class="ldot"></span>English</div>
+          <div class="lang"><span class="ldot"></span>Hindi</div>
+          <div class="lang"><span class="ldot"></span>Marwari</div>
+          <div class="lang"><span class="ldot"></span>Telugu</div>
+        </div>
+      </div>
+      <div class="avail fi" style="transition-delay:.1s">
+        <div class="avail-h">Availability Status</div>
+        <div class="avail-s"><span class="adot"></span><span class="avail-st">Open to opportunities</span></div>
+        <p class="avail-d">Fresh MBA graduate actively seeking full-time roles in brand marketing, digital strategy, and social media management. Based in Hyderabad — open to relocation and remote work.</p>
+        <div class="aitags">
+          <span class="aitag">Brand Manager</span>
+          <span class="aitag">Marketing Manager</span>
+          <span class="aitag">Social Media Manager</span>
+          <span class="aitag">Content Strategist</span>
+          <span class="aitag">Digital Marketing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot">
+    <span class="fn">Payal Choudhary</span>
+    <span class="fc">Brand Marketing &amp; Social Media Management · MBA</span>
+    <span class="fc">Hyderabad, Telangana · 2026</span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll + active section
+const nav = document.getElementById('mn');
+const nl  = document.getElementById('nl');
+const nt  = document.getElementById('nt');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('sc', window.scrollY > 60);
+  const secs = document.querySelectorAll('section[id]');
+  let cur = '';
+  secs.forEach(s => { if (s.getBoundingClientRect().top <= 130) cur = s.id; });
+  nl.querySelectorAll('a[href^="#"]').forEach(a => a.classList.toggle('act', a.getAttribute('href') === '#' + cur));
+}, { passive: true });
+nt.addEventListener('click', () => nl.classList.toggle('open'));
+nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nl.classList.remove('open')));
+
+// Fade-in on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+// Hero elements fire on load
+window.addEventListener('load', () => {
+  document.querySelectorAll('#hero .fi').forEach(el => el.classList.add('on'));
+});
+
+// Count-up animation
+function countUp(el, target, dur) {
+  dur = dur || 1600;
+  var s = 0;
+  var step = function(ts) {
+    if (!s) s = ts;
+    var p = Math.min((ts - s) / dur, 1);
+    var e = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(e * target);
+    if (p < 1) requestAnimationFrame(step); else el.textContent = target;
+  };
+  requestAnimationFrame(step);
+}
+var co = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { countUp(e.target, +e.target.dataset.t); co.unobserve(e.target); }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.cu[data-t]').forEach(function(el) { co.observe(el); });
+</script>
+</body>
+</html>
